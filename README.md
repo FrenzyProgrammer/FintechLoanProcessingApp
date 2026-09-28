@@ -1,1 +1,1 @@
-# FintechLoanProcessingApp
+# LoanProcessingApp

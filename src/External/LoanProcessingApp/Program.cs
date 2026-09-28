@@ -1,0 +1,32 @@
+using LoanProcessingApp.Application.MappingProfile;
+using LoanProcessingApp.Extensions;
+using LoanProcessingApp.Infrastructure.Dependencies;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureExtensions(builder.Configuration);
+builder.Services.AddServiceExtensions();
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<LoanAppProfile>());
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+await app.RunAsync();
