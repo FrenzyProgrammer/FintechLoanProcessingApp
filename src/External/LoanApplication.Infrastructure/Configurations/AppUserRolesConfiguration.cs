@@ -10,7 +10,7 @@ namespace LoanProcessingApp.Infrastructure.Configurations
         {
             builder.ToTable("AppUserRoles");
 
-            builder.HasKey(c => c.CustomerID);
+            builder.HasKey(x => new { x.CustomerID, x.RoleID });
 
             builder.HasOne(c => c.Roles)
             .WithMany(a => a.UserRoles)
@@ -18,7 +18,7 @@ namespace LoanProcessingApp.Infrastructure.Configurations
 
             builder.HasOne(c => c.User)
             .WithMany(a => a.UserRoles)
-            .HasForeignKey(a => a.RoleID);
+            .HasForeignKey(a => a.CustomerID);
         }
     }
 }

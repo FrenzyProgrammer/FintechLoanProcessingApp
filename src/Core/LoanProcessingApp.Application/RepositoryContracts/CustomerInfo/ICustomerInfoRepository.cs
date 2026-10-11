@@ -1,6 +1,6 @@
 ﻿using LoanProcessingApp.Domain.Entities.Customer;
 
-namespace LoanProcessingApp.Domain.RepositoryContracts.CustomerInfo
+namespace LoanProcessingApp.Application.RepositoryContracts.CustomerInfo
 {
     public interface ICustomerInfoRepository
     {

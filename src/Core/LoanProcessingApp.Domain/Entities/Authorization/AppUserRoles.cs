@@ -5,7 +5,7 @@ namespace LoanProcessingApp.Domain.Entities.Authorization
 {
     public record AppUserRoles
     {
-        public Guid? CustomerID { get; set; }
+        public Guid CustomerID { get; set; }
         public int RoleID { get; set; }
 
         public CustomerLogin User { get; set; }

@@ -1,12 +1,12 @@
 ﻿using LoanProcessingApp.Application;
 using LoanProcessingApp.Application.Commands.Transaction;
+using LoanProcessingApp.Application.RepositoryContracts.CustomerInfo;
+using LoanProcessingApp.Infrastructure.Context;
+using LoanProcessingApp.Infrastructure.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using LoanProcessingApp.Infrastructure.Context;
-using LoanProcessingApp.Domain.RepositoryContracts.CustomerInfo;
-using LoanProcessingApp.Infrastructure.Repositories;
 
 namespace LoanProcessingApp.Infrastructure.Dependencies
 {
@@ -17,7 +17,7 @@ namespace LoanProcessingApp.Infrastructure.Dependencies
         {
             // Register DbContext
             services.AddDbContext<LoanAppContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("LoanProcessingDb")));
 
             // Register repository implementations
             services.AddScoped<ICustomerInfoRepository, CustomerInfoRepository>();

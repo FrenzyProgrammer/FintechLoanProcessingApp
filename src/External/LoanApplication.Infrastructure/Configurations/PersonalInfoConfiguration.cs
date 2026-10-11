@@ -50,7 +50,7 @@ namespace LoanProcessingApp.Infrastructure.Configurations
 
             builder.HasOne(c => c.User)
             .WithOne(a => a.PersonalInfo)
-            .HasForeignKey<CustomerLogin>(c => c.CustomerId);
+            .HasForeignKey<CustomerLogin>(c => c.CustomerID);
         }
     }
 }

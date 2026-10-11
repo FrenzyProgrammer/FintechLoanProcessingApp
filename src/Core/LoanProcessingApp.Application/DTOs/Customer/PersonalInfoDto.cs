@@ -1,4 +1,5 @@
-﻿using LoanProcessingApp.Domain.Entities.Authentication;
+﻿using LoanProcessingApp.Application.DTOs.Authentication;
+using LoanProcessingApp.Application.DTOs.Authorization;
 
 namespace LoanProcessingApp.Application.DTOs.Customer
 {
@@ -18,8 +19,8 @@ namespace LoanProcessingApp.Application.DTOs.Customer
         public DateTime? ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         public bool IsActive { get; set; }
-        public virtual ICollection<AddressInfoDto> Addresses { get; set; }
-            = new HashSet<AddressInfoDto>();
-        //public CustomerLogin User { get; set; }
+        public CustomerLoginDto CustomerLogin { get; set; }
+        public ICollection<AddressInfoDto> Addresses { get; set; } = new List<AddressInfoDto>();
+        public ICollection<AppUserRolesDto> UserRoles { get; set; } = new List<AppUserRolesDto>();
     }
 }

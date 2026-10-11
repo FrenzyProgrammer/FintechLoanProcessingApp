@@ -9,7 +9,7 @@ namespace LoanProcessingApp.Domain.Entities.Authorization
     public record AppRoles
     {
         public int RoleID { get; set; }
-        public int RoleName { get; set; }
+        public string RoleName { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public string CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
