@@ -13,6 +13,5 @@
         public string PostalCode { get; set; }
         public string Address { get => $"#{HouseNo}-{Street}-{Area}-{City}-{State}-{Country}-{PostalCode}"; }
         public bool IsActive { get; set; }
-        public virtual PersonalInfoDto PersonalInfo { get; set; }
     }
 }

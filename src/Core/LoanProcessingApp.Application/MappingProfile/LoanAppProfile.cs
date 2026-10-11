@@ -9,9 +9,28 @@ namespace LoanProcessingApp.Application.MappingProfile
     {
         public LoanAppProfile()
         {
-            CreateMap<PersonalInfoDto, PersonalInfo>();
+            CreateMap<PersonalInfoDto, PersonalInfo>()
+                 .ForPath(
+                    dest => dest.User.UserName,
+                    opt => opt.MapFrom(src =>
+                        src.CustomerLogin != null
+                            ? src.CustomerLogin.UserName
+                            : null))
+                 .ForPath(
+                    dest => dest.User.PasswordSalt,
+                    opt => opt.MapFrom(src =>
+                        src.CustomerLogin != null
+                            ? src.CustomerLogin.PasswordSalt
+                            : null))
+                 .ForPath(
+                    dest => dest.User.PasswordHash,
+                    opt => opt.MapFrom(src =>
+                        src.CustomerLogin != null
+                            ? src.CustomerLogin.PasswordHash
+                            : null));
             CreateMap<AddressInfo, AddressInfoDto>().ReverseMap();
-            CreateMap<PersonalInfoDto, CreateCustomerCommand>();
+            //CreateMap<PersonalInfoDto, CreateCustomerCommand>();
+            //CreateMap<CreateCustomerCommand, PersonalInfo>();
         }
     }
 }

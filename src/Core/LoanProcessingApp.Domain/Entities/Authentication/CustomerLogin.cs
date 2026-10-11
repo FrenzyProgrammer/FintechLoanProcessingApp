@@ -5,7 +5,7 @@ namespace LoanProcessingApp.Domain.Entities.Authentication
 {
     public record CustomerLogin
     {
-        public Guid? CustomerId { get; set; }
+        public Guid CustomerID { get; set; }
         public string UserName { get; set; }
         public string PasswordSalt { get; set; }
         public string PasswordHash { get; set; }

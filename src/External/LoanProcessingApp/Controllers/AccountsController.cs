@@ -19,7 +19,7 @@ namespace LoanProcessingApp.Controllers
 
         [HttpPost]
         [Route("register")]
-        public Task Register([FromBody] PersonalInfoDto personalInfo, CancellationToken cancellationToken)
+        public Task Register([FromBody] PersonalInfoDto? personalInfo, CancellationToken cancellationToken)
         {
             return _customerService.SaveCustomer(personalInfo, cancellationToken);
             //return Enumerable.Range(1, 5).Select(index => new WeatherForecast

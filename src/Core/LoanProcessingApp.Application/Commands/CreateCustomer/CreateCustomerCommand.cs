@@ -5,5 +5,6 @@ namespace LoanProcessingApp.Application.Commands.CreateCustomer
 {
     public class CreateCustomerCommand:IRequest<PersonalInfoDto>
     {
+        public PersonalInfoDto PersonalInfo { get; set; }
     }
 }

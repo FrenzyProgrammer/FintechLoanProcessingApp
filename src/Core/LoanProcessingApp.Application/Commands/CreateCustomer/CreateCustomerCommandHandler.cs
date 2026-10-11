@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using LoanProcessingApp.Application.DTOs.Customer;
+using LoanProcessingApp.Application.RepositoryContracts.CustomerInfo;
 using LoanProcessingApp.Domain.Entities.Customer;
-using LoanProcessingApp.Domain.RepositoryContracts.CustomerInfo;
 using MediatR;
 
 namespace LoanProcessingApp.Application.Commands.CreateCustomer
@@ -18,9 +18,17 @@ namespace LoanProcessingApp.Application.Commands.CreateCustomer
 
         public async Task<PersonalInfoDto> Handle(CreateCustomerCommand createCustomerCommand, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<PersonalInfo>(createCustomerCommand);
-            await _customerRepository.AddCustomer(entity, cancellationToken);
-            return _mapper.Map<PersonalInfoDto>(entity);
+            try
+            {
+                var entity = _mapper.Map<PersonalInfo>(createCustomerCommand.PersonalInfo);
+                await _customerRepository.AddCustomer(entity, cancellationToken);
+                return _mapper.Map<PersonalInfoDto>(entity);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

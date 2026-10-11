@@ -1,8 +1,6 @@
-﻿using LoanProcessingApp.Application;
+﻿using LoanProcessingApp.Application.RepositoryContracts.CustomerInfo;
 using LoanProcessingApp.Domain.Entities.Customer;
-using LoanProcessingApp.Domain.RepositoryContracts.CustomerInfo;
 using LoanProcessingApp.Infrastructure.Context;
-using System;
 
 namespace LoanProcessingApp.Infrastructure.Repositories
 {

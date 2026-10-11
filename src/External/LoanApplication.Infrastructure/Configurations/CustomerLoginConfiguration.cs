@@ -1,4 +1,6 @@
 ﻿using LoanProcessingApp.Domain.Entities.Authentication;
+using LoanProcessingApp.Domain.Entities.Authorization;
+using LoanProcessingApp.Domain.Entities.Customer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,7 +12,7 @@ namespace LoanProcessingApp.Infrastructure.Configurations
         {
             builder.ToTable("CustomerLogin");
 
-            builder.HasKey(c => c.CustomerId);
+            builder.HasKey(c => c.CustomerID);
 
             builder.Property(c => c.UserName)
                    .HasMaxLength(50);
@@ -32,11 +34,11 @@ namespace LoanProcessingApp.Infrastructure.Configurations
 
             builder.HasOne(c => c.PersonalInfo)
             .WithOne(a => a.User)
-            .HasForeignKey<CustomerLogin>(c => c.CustomerId);
+            .HasForeignKey<PersonalInfo>(c => c.CustomerID);
 
             builder.HasMany(c => c.UserRoles)
             .WithOne(a => a.User)
-            .HasForeignKey(c => c.RoleID);
+            .HasForeignKey(c => c.CustomerID);
         }
     }
 }

@@ -17,8 +17,11 @@ namespace LoanProcessingApp.Application.Service.CustomerInfo
         }
         public Task SaveCustomer(PersonalInfoDto personalInfo, CancellationToken cancellationToken)
         {
-            var order = _mapper.Map<CreateCustomerCommand>(personalInfo);
-            return _mediator.Send(personalInfo, cancellationToken);
+            var command = new CreateCustomerCommand
+            {
+                PersonalInfo = personalInfo
+            };
+            return _mediator.Send(command, cancellationToken);
         }
     }
 }
